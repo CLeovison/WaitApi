@@ -1,5 +1,6 @@
 using System.Data;
-using Npgsql;
+using Npgsql;                                 
+ 
 
 namespace WaitApi.Database;
 
@@ -14,9 +15,14 @@ public class PostgresConnectionFactory : IDbConnectionFactory{
         _connectionString = connectionString;
     }
 
-    public async Task<IDbConnection> CreateConnectionAsync(){
-        var connection = new NpgsqlBatchCommand(_connectionString);
-        await connection.CanCreateParameter()
+    public async Task<IDbConnection> DbConnectionAsync(){
+        var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync();
+        return connection;
+    }
 
+    Task<IDbConnection> IDbConnectionFactory.CreateConnectionAsync()
+    {
+        throw new NotImplementedException();
     }
 }

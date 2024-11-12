@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WaitApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34efcb3ec002f8747356e9f0f3bb17852c17e4da")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e25cf6cb2dc39dac59574a8ab9a0bc0a4a360deb")]
 [assembly: System.Reflection.AssemblyProductAttribute("WaitApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WaitApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
