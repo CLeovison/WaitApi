@@ -1,0 +1,3 @@
+namespace WaitApi.Contracts.Data;
+
+
