@@ -1,5 +1,6 @@
 using System.Data;
 using Npgsql;
+
 namespace WaitApi.Database;
 
 public interface IDbConnectionFactory
