@@ -1,7 +1,26 @@
 using System.Data;
-
+using Npgsql;
 namespace WaitApi.Database;
 
-public interface IDbConnectionFactory{
+public interface IDbConnectionFactory
+{
     public Task<IDbConnection> GetDbConnection();
 }
+
+public class PostgresConnectionFactory : IDbConnectionFactory
+{
+    private readonly string _connectionString;
+
+    public PostgresConnectionFactory(string connectionString)
+    {
+        _connectionString = connectionString;
+    }
+
+    public async Task<IDbConnection> GetDbConnection()
+    {
+        var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync();
+        return connection;
+    }
+}
+
