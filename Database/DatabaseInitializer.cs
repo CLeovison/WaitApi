@@ -16,7 +16,7 @@ public class DatabaseIntializer{
         Username TEXT NOT NULL,
         FullName TEXT NOT NULL,
         Email TEXT NOT NULL,
-        DateOfBirth TEXT NOT NULL)");
+        DateOfBirth TEXT NOT NULL)", @"");
     }
 
 }
