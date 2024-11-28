@@ -8,9 +8,8 @@
 <li>Data Mapper Design Pattern</li>
 <li>Middleware Design Pattern</li>
 <li>Repository Design Pattern</li>
-
-
 </ul>
+<br>
 <ul>
     <li>What is Contracts Design Pattern?</li>
     <li>Contracts Design Pattern is an approach for designing software, basically it contains all the data that has been needed to communicate with your database. It includes Data Transfer Object (DTO), Request and Response</li>
