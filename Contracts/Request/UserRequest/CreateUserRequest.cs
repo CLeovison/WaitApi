@@ -3,7 +3,7 @@ namespace WaitApi.Contracts.Request.UserRequest;
 
 public class CreateUserRequest
 {
-    public Guid ID { get; init; }
+    public required Guid ID { get; init; }
 
     public required string Username { get; init; }
     public required string Password { get; init; }
