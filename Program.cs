@@ -1,6 +1,9 @@
-using WaitApi.Database;
-
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();  
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+
+var app = builder.Build();
+
+
 
 app.Run();
