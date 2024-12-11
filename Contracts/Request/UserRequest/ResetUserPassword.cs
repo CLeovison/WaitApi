@@ -1,0 +1,1 @@
+namespace WaitApi.Contracts.Request.UserRequest;
