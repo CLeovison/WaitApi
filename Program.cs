@@ -3,8 +3,8 @@ using Npgsql;
 using WaitApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-var con = builder.Configuration.GetConnectionString("ConnectionStrings");
-Console.WriteLine(con);
+
+
 
 var app = builder.Build();
 
@@ -28,7 +28,7 @@ app.MapPost("/users/register", async (IConfiguration configuration, Users user) 
     var connectionString = configuration.GetConnectionString("DefaultConnection");
     using var connection = new NpgsqlConnection(connectionString);
     const string sql =
-    "INSERT INTO waitdb (username, password, firstname, lastname, birthday, email, isSoftDeleted, createdAt, id) VALUES (@username, @password, @firstname, @lastname, @birthday, @email, @issoftdeleted, @createdat, @id)";
+    "INSERT INTO waitdb (username, password, firstname, lastname, birthday, email) VALUES (@username, @password, @firstname, @lastname, @birthday, @email)";
     var addUsers = await connection.ExecuteAsync(sql, user);
     return Results.Ok(addUsers);
 });
