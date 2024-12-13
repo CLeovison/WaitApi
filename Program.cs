@@ -1,48 +1,23 @@
 using Dapper;
-using Npgsql;
-using WaitApi.Models;
+using WaitApi.Contracts.Request.UserRequest;
+using WaitApi.Database;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var config = builder.Configuration;
+builder.Services.AddSingleton<IDbConnectionFactory>(_ =>
+    new PostgresConnectionFactory(config.GetValue<string>("ConnectionString:DefaultConnection")));
 
 
 var app = builder.Build();
-
-
-
-app.MapGet("/users", async (IConfiguration configuration) =>
+app.MapGet("/users", async (IDbConnectionFactory connectionFactory) =>
 {
-    var connectionString = configuration.GetConnectionString("DefaultConnection");
-
-    using var connection = new NpgsqlConnection(connectionString);
-
+    using var connection = await connectionFactory.CreateConnectionAsync();
     const string sql = " SELECT * FROM waitdb";
 
-    var users = await connection.QueryAsync<Users>(sql);
-
+    var users = await connection.QueryAsync<CreateUserRequest>(sql);
     return Results.Ok(users);
 });
 
-app.MapPost("/users/register", async (IConfiguration configuration, Users user) =>
-{
-    var connectionString = configuration.GetConnectionString("DefaultConnection");
-    using var connection = new NpgsqlConnection(connectionString);
-    const string sql =
-    "INSERT INTO waitdb (username, password, firstname, lastname, birthday, email) VALUES (@username, @password, @firstname, @lastname, @birthday, @email)";
-    var addUsers = await connection.ExecuteAsync(sql, user);
-    return Results.Ok(addUsers);
-});
-
-app.MapDelete("/users/{id}", async (IConfiguration configuration, int id) =>
-{
-    var connectionString = configuration.GetConnectionString("DefaultConnection");
-    using var connection = new NpgsqlConnection(connectionString);
-
-    const string sql = "DELETE FROM waitdb WHERE Id=@id"; 
-    var removeUser = await connection.ExecuteAsync(sql, new{id = id});
-
-    return Results.NoContent();
-});
 
 
 
