@@ -1,8 +1,5 @@
+using Dapper;
 namespace WaitApi.Database;
 
 
 
-public class DatabaseInitializer{
-
-
-}

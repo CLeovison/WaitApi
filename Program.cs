@@ -5,10 +5,12 @@ using WaitApi.Database;
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 builder.Services.AddSingleton<IDbConnectionFactory>(_ =>
-    new PostgresConnectionFactory(config.GetValue<string>("ConnectionString:DefaultConnection")));
+    new PostgresConnectionFactory(config.GetValue<string>("ConnectionStrings:DefaultConnection")));
 
 
 var app = builder.Build();
+
+
 app.MapGet("/users", async (IDbConnectionFactory connectionFactory) =>
 {
     using var connection = await connectionFactory.CreateConnectionAsync();
