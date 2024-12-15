@@ -8,9 +8,9 @@ public class CreateUserRequest
     public required string Password { get; init; }
     public required string FirstName { get; init; }
     public required string LastName { get; init; }
+    public DateTime Birthday { get; init; }
     public required string Email { get; init; }
     public bool IsSoftDeleted { get; init; } = false;
-    public DateTime RemoveUser { get; init; }
     public DateTime CreatAt { get; init; }
 
 }

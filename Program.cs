@@ -20,7 +20,14 @@ app.MapGet("/users", async (IDbConnectionFactory connectionFactory) =>
     return Results.Ok(users);
 });
 
+app.MapPost("/users/register", async (IDbConnectionFactory connectionFactory, CreateUserRequest user) =>{
+    using var connection = await connectionFactory.CreateConnectionAsync();
+    const string sql = "INSERT INTO public.waitdb(username, password, firstname, lastname, birthday, email) VALUES (@username, @password, @firstname, @lastname, @birthday, @email)";
+    await connection.ExecuteAsync(sql,user);
 
+    return Results.Ok();
+
+});
 
 
 app.Run();
