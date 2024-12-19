@@ -1,6 +1,6 @@
 namespace WaitApi.Contracts.Request.UserRequest;
 
-public class GetUserPaginatedRequest
+public class GetAllUserRequest
 {
     public Guid Id { get; init; }
     public required string Username { get; init; }
