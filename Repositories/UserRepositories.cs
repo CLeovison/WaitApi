@@ -32,7 +32,19 @@ public class UserRepositories : IUserRepositories
         return await connection.QuerySingleOrDefaultAsync<UserDto>("SELECT * From Users WHERE id = @Id TOP 1", new { Id = id.ToString() });
     }
 
+    public async Task<bool> UpdateUserAsync(UserDto user)
+    {
+        using var connection = await _connectionString.CreateConnectionAsync();
+        var result = await connection.ExecuteAsync(@"UPDATE waitdb SET FirstName = @firstname, LastName = @lastname, Birthday = @birthday, Email = @email WHERE Id = @id");
+        return result > 0;
 
+    }
+
+    public async Task<bool> DeleteUserAsync(Guid id){
+        using var connection = await _connectionString.CreateConnectionAsync();
+        var result = await connection.ExecuteAsync(@"DELETE FROM waitdb where ID = @id");
+        return result > 0;
+    }
 
 
 }
