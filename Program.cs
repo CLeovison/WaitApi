@@ -1,4 +1,5 @@
 using System.Reflection;
+using WaitApi.Extensions;
 using WaitApi.Database;
 
 var builder = WebApplication.CreateBuilder(args);
