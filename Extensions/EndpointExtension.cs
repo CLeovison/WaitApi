@@ -16,15 +16,7 @@ public static class EndpointExtension
         return services;
     }
 
-    public static IApplicationBuilder Endpoint(this WebApplication app){
-        IEnumerable<IEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
 
-        foreach(IEndpoint endpoint in endpoints){
-            endpoint.Endpoint(app);
-
-        }
-        return app;
-    }
 
     
 }
