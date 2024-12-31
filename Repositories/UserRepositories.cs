@@ -17,7 +17,7 @@ public class UserRepositories : IUserRepositories
     public async Task<bool> CreateUserAsync(UserDto user)
     {
         using var connection = await _connectionString.CreateConnectionAsync();
-        var result = await connection.ExecuteAsync(@"INSERT INTO waitdb(id, username,password,firstname,lastname,birthday, email) VALUES (@id,)", user);
+        var result = await connection.ExecuteAsync(@"INSERT INTO waitdb(id, username,password,firstname,lastname,birthday, email) VALUES (@id, @username, @password, @firstname, @lastname, @birthday, @email)", user);
         return result > 0;
     }
 
