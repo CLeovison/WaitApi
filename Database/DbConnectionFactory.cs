@@ -15,7 +15,9 @@ public class PostgresConnectionFactory : IDbConnectionFactory
     public PostgresConnectionFactory(string connectionString)
     {
         _connectionString = connectionString;
+
     }
+
 
     public async Task<IDbConnection> CreateConnectionAsync()
     {
