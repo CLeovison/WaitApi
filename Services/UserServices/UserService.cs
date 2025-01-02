@@ -1,13 +1,7 @@
 using WaitApi.Contracts.Data;
 using WaitApi.Repositories;
-using FluentValidation;
-using FluentValidation.Results;
 
-
-namespace WaitApi.Services.UserServices;
-
-
-public class UserService : IUserService
+public class UserService
 {
 
     private readonly IUserRepositories _userRepositories;
@@ -22,16 +16,6 @@ public class UserService : IUserService
     public async Task<bool> CreateUserAsync(UserDto user)
     {
 
-        var existingUser = await _userRepositories.GetUserIdAsync(user.Id);
-        if (existingUser is null)
-        {
-            var message = $"A User with id{user.Id} already exist";
-
-            throw new ValidationException(message, new[]{
-                new ValidationFailure(nameof(UserDto),message)
-            });
-        }
-
-        var 
+    
     }
 }

@@ -16,12 +16,7 @@ public class CreateUserEndpoint : IEndpoint
 
         app.MapPost("/users/register", async (IConfiguration configuration, UserDto user) =>
          {
-      var connectionString = configuration.GetConnectionString("DefaultConnection");
-      using var connection = new NpgsqlConnection(connectionString);
-      const string sql =
-      "INSERT INTO waitdb (username, password, firstname, lastname, birthday, email) VALUES (@username, @password, @firstname, @lastname, @birthday, @email)";
-      var addUsers = await connection.ExecuteAsync(sql, user);
-      return Results.Ok(addUsers);
+
         });
     }
 }
