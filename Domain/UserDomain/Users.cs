@@ -1,4 +1,4 @@
-using WaitApi.Domain.UserDomain.ValueObjects;
+using WaitApi.Domain.UserDomain.Common;
 
 namespace WaitApi.Domain.UserDomain;
 
