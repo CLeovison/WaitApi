@@ -6,7 +6,7 @@ namespace WaitApi.Domain.UserDomain.Common;
 
 public sealed class FirstName : ValueObject
 {
-    public const int MaxLength = 50;
+    private const int MaxLength = 50;
     private static readonly Regex FirstNameRegex =
            new("^[a-z\\d](?:[a-z\\d]|-(?=[a-z\\d])){0,38}$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
