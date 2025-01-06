@@ -19,16 +19,17 @@ public class Email : ValueObject
         }
 
         if(regex != EmailRegex){
-            throw new Exception("");
+            throw new Exception("Your Email Was Not Valid");
         }
 
         Length = minlength;
+
+        EmailRegularX = regex;
     }
-
-
-
     public required string Length { get; init; } = default!;
+
     public Regex EmailRegularX { get; init; }
+
     protected override IEnumerable<object> GetAtomicValues()
     {
         yield return Length;
