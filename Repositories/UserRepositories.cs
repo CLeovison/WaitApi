@@ -9,9 +9,11 @@ public class UserRepositories : IUserRepositories
 {
     private readonly IDbConnectionFactory _connectionString;
 
+    //Constructor
     public UserRepositories(IDbConnectionFactory connectionString)
     {
         _connectionString = connectionString;
+        
     }
 
     public async Task<bool> CreateUserAsync(UserDto user)
