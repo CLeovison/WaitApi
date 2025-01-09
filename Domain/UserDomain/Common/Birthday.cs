@@ -1,4 +1,5 @@
 
+using System.Text.RegularExpressions;
 using WaitApi.Domain.Primitives;
 
 namespace WaitApi.Domain.UserDomain.Common;
@@ -6,19 +7,30 @@ namespace WaitApi.Domain.UserDomain.Common;
 
 public class Birthday : ValueObject
 {
-    
-    public Birthday(DateOnly dob)
+
+    private readonly Regex BirthdayRegex = new("^(0[1-9]|1[0-2])/(0[1-9]|1\\d|2\\d|3[01])/\\d{4}$", RegexOptions.Compiled);
+
+    public Birthday(DateOnly dateofbirth, Regex birthdayregex)
     {
-        if(dob > DateOnly.FromDateTime(DateTime.Now)){
-            throw new Exception("You're date of birth cannot be right now");
+        if (dateofbirth > DateOnly.FromDateTime(DateTime.Now))
+        {
+            throw new ArgumentException("You're date of birth cannot be right now");
         }
-        DateOfBirth = dob;
+
+        if (birthdayregex != BirthdayRegex)
+        {
+            throw new ArgumentException("The Format that you provide was incorrect");
+        }
+        DateOfBirth = dateofbirth;
+        BirthdayRegexValidation = birthdayregex;
     }
 
     public DateOnly DateOfBirth { get; init; }
-
+    public Regex BirthdayRegexValidation { get; init; }
     protected override IEnumerable<object> GetAtomicValues()
     {
-            yield return DateOfBirth;
+        yield return BirthdayRegexValidation;
+        yield return DateOfBirth;
+
     }
 }
