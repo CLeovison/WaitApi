@@ -23,13 +23,14 @@ public sealed class FirstName : ValueObject
         RegularX = regex;
         Value = value;
     }
-
-    public string Value { get; init; }
     public Regex RegularX { get; init; }
+    public string Value { get; init; }
+
     protected override IEnumerable<object> GetAtomicValues()
     {
+        yield return RegularX;
         yield return Value;
-        yield return RegularX;  
+
     }
 
 

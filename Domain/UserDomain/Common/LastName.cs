@@ -10,7 +10,7 @@ public class LastName : ValueObject
     private const int MaxLength = 40;
 
     //Constructor
-    public LastName(Regex regex, string maxlength)
+    public LastName(string maxlength, Regex regex)
     {
 
         if (LastNameRegex != regex)
@@ -33,6 +33,7 @@ public class LastName : ValueObject
 
     protected override IEnumerable<object> GetAtomicValues()
     {
+        yield return MaximumLength;
         yield return LastNameRegularX;
     }
 }
