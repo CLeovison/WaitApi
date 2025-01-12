@@ -27,7 +27,7 @@ public class Email : ValueObject
 
         EmailRegularX = regex;
     }
-    public string Length { get; init; };
+    public string Length { get; init; }
 
     public Regex EmailRegularX { get; init; }
 
