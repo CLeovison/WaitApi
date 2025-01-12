@@ -1,8 +1,9 @@
 using WaitApi.Extensions;
 using WaitApi.Database;
-using WaitApi.Domain.UserDomain;
+
 using Dapper;
 using Npgsql;
+using WaitApi.Contracts.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -18,11 +19,11 @@ var app = builder.Build();
 app.Endpoint();
 app.UseCors();
 
-app.MapPost("/users/registration", async (IConfiguration configuration, Users users) =>{
+app.MapPost("/users/registration", async (IConfiguration configuration, UserDto users) =>{
 
      var connectionString = configuration.GetConnectionString("DefaultConnection");
      using var connection = new NpgsqlConnection(connectionString);
-    const string sql = "INSERT INTO users (username, password, firstname, lastname, birthday, email) VALUES (@username, @password, @firstname, @lastname, @birthday, @email)";
+    const string sql = "INSERT INTO waitdb (username, password, firstname, lastname, birthday, email) VALUES (@username, @password, @firstname, @lastname, @birthday, @email)";
     var addUsers = await connection.ExecuteAsync(sql, users);
 
     return Results.Ok(addUsers);
