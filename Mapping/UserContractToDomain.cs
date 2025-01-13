@@ -8,7 +8,7 @@ using WaitApi.Domain.UserDomain.Common;
 namespace WaitApi.Mapping;
 
 
-public static class UserContractToDomain
+public static class UserContractToDomainMapper
 {
     public static Users ToCreateUser(this CreateUserRequest request)
     {
@@ -25,6 +25,8 @@ public static class UserContractToDomain
             new Regex("^(0[1-9]|1[0-2])/(0[1-9]|1\\d|2\\d|3[01])/\\d{4}$")),
 
             Username = new Username(request.Username),
+
+            Password = new Password(request.Password)
 
         };
     }
