@@ -1,12 +1,10 @@
 using System.Text.RegularExpressions;
-
 using WaitApi.Contracts.Request.UserRequest;
 using WaitApi.Domain.UserDomain;
 using WaitApi.Domain.UserDomain.Common;
 
 
 namespace WaitApi.Mapping;
-
 
 public static class UserContractToDomainMapper
 {
