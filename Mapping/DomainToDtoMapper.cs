@@ -13,7 +13,7 @@ public static class DomainToDtoMapper
         {
             FirstName = users.FirstName.Value,
             LastName = users.LastName.MaximumLength,
-            Username = users.Username.MinimumLenghth,
+            Username = users.Username.MinimumLength,
             Password = users.Password.MinimumLength,
             Email = users.Email.EmailRegularX.ToString()
 

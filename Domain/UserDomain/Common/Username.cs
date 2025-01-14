@@ -12,12 +12,12 @@ public class Username : ValueObject
             throw new ArgumentException("Your username must be in between 6 to 30 characters long");
         }
 
-        MinimumLenghth = minlegnth;
+        MinimumLength = minlegnth;
     }
 
-    public string MinimumLenghth { get; init; }
+    public string MinimumLength { get; init; }
     protected override IEnumerable<object> GetAtomicValues()
     {
-        yield return MinimumLenghth;
+        yield return MinimumLength;
     }
 }

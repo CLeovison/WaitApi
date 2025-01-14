@@ -16,7 +16,7 @@ public class CreateUserEndpoint : IEndpoint
 
         app.MapPost("/users/register", async (IConfiguration configuration, UserDto user) =>
          {
-
+            
         });
     }
 }

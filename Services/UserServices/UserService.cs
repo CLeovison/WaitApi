@@ -1,21 +1,24 @@
-// using WaitApi.Contracts.Data;
-// using WaitApi.Repositories;
+using WaitApi.Domain.UserDomain;
+using WaitApi.Mapping;
+using WaitApi.Repositories;
 
-// public class UserService
-// {
+namespace WaitApi.Services.UserServices;
+public class UserService : IUserService
+{
 
-//     private readonly IUserRepositories _userRepositories;
+    private readonly IUserRepositories _userRepositories;
 
 
-//     public UserService(IUserRepositories userRepositories)
-//     {
+    public UserService(IUserRepositories userRepositories)
+    {
 
-//         _userRepositories = userRepositories;
-//     }
+        _userRepositories = userRepositories;
+    }
 
-//     public async Task<bool> CreateUserAsync(UserDto user)
-//     {
+    public async Task<bool> CreateUserAsync(Users user)
+    {
 
-    
-//     }
-// }
+        var userDto = user.ToUserDto();
+        return await _userRepositories.CreateUserAsync(userDto);
+    }
+}
