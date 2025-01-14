@@ -19,11 +19,7 @@ builder.Services.AddCors();
 var app = builder.Build();
 
 
-app.MapPost("/user/registration", async () =>{
 
-    
-
-});
 app.Endpoint();
 app.UseCors();
 
