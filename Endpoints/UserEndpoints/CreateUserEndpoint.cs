@@ -1,22 +1,34 @@
 using WaitApi.Abstract;
-
-using Npgsql;
-using Dapper;
-using WaitApi.Contracts.Data;
+using WaitApi.Services.UserServices;
+using WaitApi.Contracts.Request.UserRequest;
+using WaitApi.Mapping;
 
 namespace WaitApi.Endpoints.UserEndpoints;
 
+//Instead of Using A Traditional Constructor, I use Primary Constructor to declare the Service Collection
 
-public class CreateUserEndpoint : IEndpoint
+//Traditional Constructor Looks Like
+//  private readonly IUserService _userService;
+// 
+// public CreateUserEndpoint(IUserService userService){ 
+//      _userService = userService.
+// }
+// 
+
+//A Primary Constructor Looks like this, public class CreateUserEndpoint(IUserService userService)
+
+public class CreateUserEndpoint(IUserService userService) : IEndpoint
 {
 
     public void Endpoint(IEndpointRouteBuilder app)
     {
 
-
-        app.MapPost("/users/register", async (IConfiguration configuration, UserDto user) =>
+        app.MapPost("/users/register", async (IConfiguration configuration, CreateUserRequest req) =>
          {
-            
-        });
+             var user = req.ToCreateUser();
+
+             await userService.CreateUserAsync(user);
+
+         });
     }
 }
