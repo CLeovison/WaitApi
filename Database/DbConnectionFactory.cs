@@ -14,15 +14,22 @@ public class PostgresConnectionFactory : IDbConnectionFactory
 
     public PostgresConnectionFactory(string connectionString)
     {
-        _connectionString = connectionString;
-
+         _connectionString = connectionString;
     }
-
 
     public async Task<IDbConnection> CreateConnectionAsync()
     {
         var connection = new NpgsqlConnection(_connectionString);
-        await connection.OpenAsync();
-        return connection;
+        try
+        {
+            await connection.OpenAsync();
+            return connection;
+        }
+        catch (Exception error)
+        {
+            {
+                Console.Error.WriteLine($"Error opening PostgreSQL connection: {error.Message}"); throw;
+            }
+        }
     }
 }

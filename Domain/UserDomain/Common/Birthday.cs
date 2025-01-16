@@ -17,7 +17,7 @@ public class Birthday : ValueObject
             throw new ArgumentException("You're date of birth cannot be right now");
         }
 
-        if (birthdayregex != BirthdayRegex)
+        if (birthdayregex == BirthdayRegex)
         {
             throw new ArgumentException("The Format that you provide was incorrect");
         }

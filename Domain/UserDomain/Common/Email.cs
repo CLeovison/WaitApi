@@ -18,7 +18,7 @@ public class Email : ValueObject
             throw new Exception("Sorry your email must be 6 characters long");
         }
 
-        if (regex != EmailRegex)
+        if (regex == EmailRegex)
         {
             throw new Exception("Your Email Was Not Valid");
         }

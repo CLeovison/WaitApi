@@ -8,9 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 
 builder.Services.AddEndpoint(typeof(Program).Assembly);
+
 builder.Services.AddSingleton<IDbConnectionFactory>(_ =>
-    new PostgresConnectionFactory(config.GetValue<string>("Database:ConnectionString")
-     ?? throw new Exception("The Database Connection String was not valid")));
+    new PostgresConnectionFactory(config.GetValue<string>("Database:ConnectionString")));
 builder.Services.AddSingleton<IUserRepositories, UserRepositories>();
 builder.Services.AddSingleton<IUserService, UserService>();
 builder.Services.AddCors();
