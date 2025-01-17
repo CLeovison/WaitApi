@@ -8,7 +8,7 @@ namespace WaitApi.Domain.UserDomain.Common;
 public class Birthday : ValueObject
 {
 
-    private readonly Regex BirthdayRegex = new("^(0[1-9]|1[0-2])/(0[1-9]|1\\d|2\\d|3[01])/\\d{4}$", RegexOptions.Compiled);
+    private readonly Regex BirthdayRegex = new("^(0[1-9]|1[0-2])/(0[1-9]|1[0-9]|2[0-9]|3[0-1])/(19[0-9][0-9]|20[0-9][0-9]|2100)$", RegexOptions.Compiled);
 
     public Birthday(DateOnly dateofbirth, Regex birthdayregex)
     {
@@ -29,8 +29,8 @@ public class Birthday : ValueObject
     public Regex BirthdayRegexValidation { get; init; }
     protected override IEnumerable<object> GetAtomicValues()
     {
-        yield return BirthdayRegexValidation;
         yield return DateOfBirth;
+        yield return BirthdayRegexValidation;
 
     }
 }

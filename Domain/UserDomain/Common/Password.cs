@@ -7,7 +7,7 @@ public class Password : ValueObject
     {
         if (minlegnth.Length < 6 || minlegnth.Length > 30)
         {
-            throw new ArgumentException("Your username must be in between 6 to 30 characters long");
+            throw new ArgumentException("Your password must be in between 6 to 30 characters long");
         }
 
         MinimumLength = minlegnth;
