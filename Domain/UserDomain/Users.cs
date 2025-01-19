@@ -1,4 +1,3 @@
-
 using WaitApi.Domain.UserDomain.Common;
 
 namespace WaitApi.Domain.UserDomain;
