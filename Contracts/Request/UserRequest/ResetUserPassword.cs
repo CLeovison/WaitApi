@@ -4,4 +4,5 @@ public class ResetUserPassword
 {
 
     public Guid Id { get; init; }
+    
 }

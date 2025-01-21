@@ -11,8 +11,7 @@ public static class DomainToDtoMapper
     {
         return new UserDto
         {
-            FirstName = users.FirstName.Value,
-            LastName = users.LastName.MaximumLength,
+            Fullname = $"{users.FirstName}{users.LastName}",
             Username = users.Username.MinimumLength,
             Password = users.Password.MinimumLength,
             Email = users.Email.EmailRegularX.ToString()
