@@ -11,9 +11,9 @@ public class DeleteUserEndpoint(IUserService service) : IEndpoint
     public void Endpoint(IEndpointRouteBuilder app)
     {
 
-        app.MapDelete("/user/delete", (DeleteUserRequest req) =>
+        app.MapDelete("/user/delete", async (DeleteUserRequest req, CancellationToken ct) =>
         {
-            var user = req.Id;
+        
             
         });
 

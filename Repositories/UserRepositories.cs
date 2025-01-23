@@ -1,7 +1,6 @@
 using Dapper;
 using WaitApi.Contracts.Data;
 using WaitApi.Database;
-using WaitApi.Domain.UserDomain;
 
 namespace WaitApi.Repositories;
 
@@ -37,7 +36,7 @@ public class UserRepositories : IUserRepositories
     public async Task<IEnumerable<UserDto?>> GetUserSearchAsync()
     {
         using var connection = await _connectionString.CreateConnectionAsync();
-        return await connection.QueryAsync<UserDto>(@"SELECT firstname, lastname FROM waitdb WHERE ");
+        return await connection.QueryAsync<UserDto>(@"SELECT firstname, lastname FROM waitdb WHERE firstname ILIKE %@%,lastname ILIKE %@%");
     }
     public async Task<bool> UpdateUserAsync(UserDto user)
     {
