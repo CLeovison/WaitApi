@@ -15,7 +15,7 @@ public class ForgotUserPasswordEndpoint(IUserService service) : IEndpoint
 
         app.MapGet("/users/forgot-password", async (ForgotUserPasswordRequest req) =>
         {
-            var user = req.Id;
+         
 
 
         });
