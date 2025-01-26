@@ -11,10 +11,12 @@ public static class DomainToDtoMapper
     {
         return new UserDto
         {
-            Fullname = $"{users.FirstName}{users.LastName}",
+            FirstName = users.FirstName.Value,
+            LastName = users.LastName.MaximumLength,
             Username = users.Username.MinimumLength,
             Password = users.Password.MinimumLength,
-            Email = users.Email.EmailRegularX.ToString()
+            Email = users.Email.EmailRegularX.ToString(),
+       
 
         };
     }

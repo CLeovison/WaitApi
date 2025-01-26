@@ -1,15 +1,15 @@
-using WaitApi.Abstract;
-using WaitApi.Services.UserServices;
+// using WaitApi.Abstract;
+// using WaitApi.Services.UserServices;
 
-namespace WaitApi.Endpoints.UserEndpoints;
-
-
-public class GetUserEndpoint(IUserService service) : IEndpoint
-{
+// namespace WaitApi.Endpoints.UserEndpoints;
 
 
-    public void Endpoint(IEndpointRouteBuilder app)
-    {
+// public class GetUserEndpoint(IUserService service) : IEndpoint
+// {
 
-    }
-}
+
+//     public void Endpoint(IEndpointRouteBuilder app)
+//     {
+
+//     }
+// }

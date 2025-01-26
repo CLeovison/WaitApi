@@ -12,7 +12,6 @@ public class CreateUserRequest
     public required string LastName { get; init; }
     public required string Email { get; init; }
     public DateOnly Birthday { get; init; }
-    public Roles Roles { get; init; } = Roles.User;
 
 
 }
