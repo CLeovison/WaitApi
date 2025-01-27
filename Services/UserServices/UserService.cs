@@ -17,7 +17,7 @@ public class UserService : IUserService
 
     public async Task<bool> CreateUserAsync(Users user)
     {
-
+        // var existingUser = await _userRepositories.GetAllUserAsync(user.id);
         var userDto = user.ToUserDto();
         return await _userRepositories.CreateUserAsync(userDto);
     }

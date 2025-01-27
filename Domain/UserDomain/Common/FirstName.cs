@@ -12,7 +12,7 @@ public sealed class FirstName : ValueObject
 
     public FirstName(string value, Regex regex)
     {
-        if (value.Length < MaxLength)
+        if (value.Length > MaxLength)
         {
             throw new Exception("The Length of the Firstname exceeds the Maximum Length");
         }
