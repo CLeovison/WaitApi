@@ -11,6 +11,9 @@ public sealed class PasswordHasher : IPasswordHasher
     private readonly HashAlgorithmName algorithm = HashAlgorithmName.SHA3_256;
 
     public string Hash(string password){
-        
-    };
+        byte[] salt = RandomNumberGenerator.GetBytes(SaltSize);
+        byte [] hash = Rfc2898DeriveBytes.Pbkdf2(password,salt,Iterations,algorithm,HashSize);
+
+        return $"{Convert.ToHexString(hash)}-{Convert.ToHexString(salt)}";
+    }
 }

@@ -8,7 +8,7 @@ namespace WaitApi.Mapping;
 
 public static class UserContractToDomainMapper
 {
-    public static Users ToCreateUser(this CreateUserRequest request)
+    public static Users ToCreateUser(this RegisterUserRequest request)
     {
         return new Users
         {

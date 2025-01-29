@@ -1,8 +1,8 @@
-using WaitApi.Contracts.Request.UserRequest;
+
 namespace WaitApi.Contracts.Data;
 
 
-public class UserDto()
+public class UserDto
 {
     public Guid Id { get; init; }
     public required string FirstName { get; init; }

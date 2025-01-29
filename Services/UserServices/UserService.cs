@@ -1,24 +1,15 @@
 using WaitApi.Domain.UserDomain;
+using WaitApi.Infrastracture;
 using WaitApi.Mapping;
 using WaitApi.Repositories;
 
 namespace WaitApi.Services.UserServices;
-public class UserService : IUserService
+public class UserService(IUserRepositories userRepositories, PasswordHasher passwordHasher) : IUserService
 {
-
-    private readonly IUserRepositories _userRepositories;
-
-
-    public UserService(IUserRepositories userRepositories)
+    public async Task<bool> RegisterUserAsync(Users user)
     {
-
-        _userRepositories = userRepositories;
-    }
-
-    public async Task<bool> CreateUserAsync(Users user)
-    {
-        // var existingUser = await _userRepositories.GetAllUserAsync(user.id);
+  
         var userDto = user.ToUserDto();
-        return await _userRepositories.CreateUserAsync(userDto);
+        return await userRepositories.RegisterUserAsync(userDto);
     }
 }

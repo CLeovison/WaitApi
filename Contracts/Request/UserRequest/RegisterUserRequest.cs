@@ -3,7 +3,7 @@ using WaitApi.Enums;
 namespace WaitApi.Contracts.Request.UserRequest;
 
 
-public class CreateUserRequest
+public class RegisterUserRequest
 {
     public Guid UserId { get; init; }
     public required string Username { get; init; }

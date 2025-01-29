@@ -4,6 +4,6 @@ namespace WaitApi.Services.UserServices;
 
 
 public interface IUserService{
-    Task<bool> CreateUserAsync(Users user);
+    Task<bool> RegisterUserAsync(Users user);
 
 }
