@@ -16,7 +16,7 @@ public static class DomainToDtoMapper
             Username = users.Username.MinimumLength,
             Password = users.Password.MinimumLength,
             Email = users.Email.EmailRegularX.ToString(),
-       
+
 
         };
     }

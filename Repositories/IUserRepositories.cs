@@ -11,7 +11,7 @@ public interface IUserRepositories
     Task<IEnumerable<UserDto>> GetAllUserAsync();
     Task<UserDto?> GetUserIdAsync(Guid id);
     Task<IEnumerable<UserDto?>> GetUserSearchAsync();
-    Task<UserDto?> LoginUserAsync(string username);
+    Task<UserDto?> LoginUserAsync(string username, string password);
     Task<bool> UpdateUserAsync(UserDto user);
     Task<bool> DeleteUserAsync(Guid id);
 
