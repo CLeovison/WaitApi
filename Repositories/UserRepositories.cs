@@ -24,12 +24,12 @@ public class UserRepositories(IDbConnectionFactory connectionString) : IUserRepo
 
         return await connection.QuerySingleOrDefaultAsync(@"SELECT * FROM waitdb WHERE username = @username, password = @password", username);
     }
-    public async Task<IEnumerable<UserDto>> ExistingUserAsync(string email, string username)
+    public async Task<IEnumerable<UserDto>> ExistingUserAsync(string email, string username, UserDto user)
     {
         using var connection = await connectionString.CreateConnectionAsync();
         var result = await connection.QueryAsync<UserDto>
         (@"SELECT username,email FROM waitdb WHERE username = @username, email = @email",
-        new { email = email.ToString(), userame = username.ToString() });
+        new { email = user.Email.ToString(), username = user.Username.ToString() });
         return result;
     }
     public async Task<IEnumerable<UserDto>> GetAllUserAsync()

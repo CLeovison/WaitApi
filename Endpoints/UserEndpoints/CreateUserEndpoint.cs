@@ -23,7 +23,7 @@ public class CreateUserEndpoint(IUserService userService) : IEndpoint
     public void Endpoint(IEndpointRouteBuilder app)
     {
 
-        app.MapPost("/users/register", async (RegisterUserRequest req, CancellationToken ct) =>
+        app.MapPost("/users/register", async (RegisterUserRequest req) =>
          {
              var user = req.ToCreateUser();
 

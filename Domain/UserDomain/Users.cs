@@ -5,7 +5,7 @@ namespace WaitApi.Domain.UserDomain;
 
 public class Users
 {
-
+    public required UserId UserId { get; init; }
     public required FirstName FirstName { get; init; }
     public required LastName LastName { get; init; }
     public required Username Username { get; init; }
