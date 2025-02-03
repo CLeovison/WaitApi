@@ -2,10 +2,13 @@ using WaitApi.Domain.Primitives;
 
 namespace WaitApi.Domain.UserDomain.Common;
 
-public class UserId(Guid id) : ValueObject
+public class UserId : ValueObject
 {
-
-    public Guid ID { get; init; } = id;
+    public UserId(Guid id)
+    {
+        ID = id;
+    }
+    public Guid ID { get; init; }
 
 
     protected override IEnumerable<object> GetAtomicValues()
