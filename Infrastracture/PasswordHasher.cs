@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using WaitApi.Abstract;
 
 namespace WaitApi.Infrastracture;
 

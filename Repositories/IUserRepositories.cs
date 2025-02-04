@@ -7,7 +7,7 @@ public interface IUserRepositories
 {
 
     Task<bool> RegisterUserAsync(UserDto user);
-    Task<IEnumerable<UserDto>> ExistingUserAsync(string email, string username);
+    Task<bool> ExistingUserAsync(UserDto user);
     Task<IEnumerable<UserDto>> GetAllUserAsync();
     Task<UserDto?> GetUserIdAsync(Guid id);
     Task<IEnumerable<UserDto?>> GetUserSearchAsync();

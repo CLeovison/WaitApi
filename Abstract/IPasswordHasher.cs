@@ -1,4 +1,4 @@
-namespace WaitApi.Infrastracture;
+namespace WaitApi.Abstract;
 
 
 public interface IPasswordHasher{
